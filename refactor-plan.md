@@ -1,5 +1,22 @@
 # Telegram Fetcher Refactor Plan (Class-Based Architecture)
 
+# 🚀 Refactor Progress Tracker
+
+## Current Status
+
+* [ ] Tahap 1 — UserStateManager
+* [ ] Tahap 2 — File Utilities
+* [ ] Tahap 3 — Messages Module
+* [ ] Tahap 4 — BatchManager
+* [ ] Tahap 5 — DownloadQueueManager
+* [ ] Tahap 6 — Downloader Service
+* [ ] Tahap 7 — ConfigManager
+* [ ] Tahap 8 — Client Factory
+* [ ] Tahap 9 — TelegramFetcherBot
+* [ ] Tahap 10 — Simplify `__main__.py`
+
+---
+
 ## Tujuan Refactor
 
 Melakukan refactor project Telegram Fetcher yang saat ini masih didominasi global state dan procedural code menjadi arsitektur berbasis class (Class-Based Components) yang:
