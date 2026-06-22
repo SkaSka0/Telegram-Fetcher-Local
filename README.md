@@ -124,7 +124,7 @@ On first run, `main.py` will validate the `.env` file, generate `colab_fetcher/c
 | Command | Description |
 |---|---|
 | `/start` | Displays a welcome message |
-| `/tgdownload` | Activates upload mode; the bot will accept the next file(s) sent |
+| `/tgdownload` | Activates downloads mode; the bot will accept the next file(s) sent |
 | `/queue` | Shows active downloads and pending files in the queue |
 | `/cancelall` | Cancels all active downloads and clears the queue |
 | `/help` | Lists all available commands |
