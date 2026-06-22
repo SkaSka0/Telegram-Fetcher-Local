@@ -43,10 +43,10 @@ Telegram-Fetcher/
 │   │   ├── client.py        # Pyrogram client initialization
 │   │   └── logging.py       # Shared logger configuration
 │   └── my_bot.session       # Pyrogram session file, not tracked in git
-├── downloads/                # Default download destination
-├── .env                       # Local credentials, not tracked in git
-├── .env.example                # Template for .env
-├── main.py                     # Entry script: loads .env, writes credentials.json, starts the bot
+├── downloads/               # Default download destination
+├── .env                     # Local credentials, not tracked in git
+├── .env.example             # Template for .env
+├── main.py                  # Entry script: loads .env, writes credentials.json, starts the bot
 └── requirements.txt
 ```
 
