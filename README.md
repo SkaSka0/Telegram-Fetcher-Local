@@ -6,7 +6,7 @@ Originally built and run on Google Colab, this version has been migrated to run 
 
 ## Features
 
-- **Command-gated uploads** — the bot only processes files after an explicit `/tgupload` command. Files sent without an active upload session are silently ignored.
+- **Command-gated uploads** — the bot only processes files after an explicit `/tgdownload` command. Files sent without an active upload session are silently ignored.
 - **Batch handling** — forward multiple files at once and they are grouped into a single queue batch with one summary message, instead of one notification per file.
 - **Live download progress** — progress bar, transfer speed, elapsed time, and ETA updates directly in the chat.
 - **Cancellable downloads** — cancel an individual in-progress download via an inline button, or clear the entire queue with `/cancelall`.
@@ -55,7 +55,7 @@ Telegram-Fetcher/
 Clone the repository:
 
 ```bash
-git clone https://github.com/<your-username>/Telegram-Fetcher.git
+git clone https://github.com/SkaSka0/Telegram-Fetcher-Local.git
 cd Telegram-Fetcher
 ```
 
@@ -124,20 +124,20 @@ On first run, `main.py` will validate the `.env` file, generate `colab_fetcher/c
 | Command | Description |
 |---|---|
 | `/start` | Displays a welcome message |
-| `/tgupload` | Activates upload mode; the bot will accept the next file(s) sent |
+| `/tgdownload` | Activates upload mode; the bot will accept the next file(s) sent |
 | `/queue` | Shows active downloads and pending files in the queue |
 | `/cancelall` | Cancels all active downloads and clears the queue |
 | `/help` | Lists all available commands |
 
 ### Upload Flow
 
-The bot **only processes files immediately after `/tgupload` is sent**. Files sent without an active upload session are ignored without any reply, by design.
+The bot **only processes files immediately after `/tgdownload` is sent**. Files sent without an active upload session are ignored without any reply, by design.
 
-1. Send `/tgupload`.
+1. Send `/tgdownload`.
 2. Send or forward one or more files (documents, videos, audio, or photos). Files forwarded together within a short window are grouped into a single batch and queued together.
 3. The bot replies with a batch confirmation, then processes files sequentially, posting live progress for each one.
 4. Once the queue is empty, a summary message is sent with the list of completed downloads, total size, and elapsed time.
-5. To upload another file separately afterward, send `/tgupload` again.
+5. To upload another file separately afterward, send `/tgdownload` again.
 
 ## How It Works
 
@@ -158,7 +158,7 @@ The `.env` file exists but one or more required variables are empty. Double-chec
 Confirm `DOWNLOAD_PATH` in `.env` is an absolute path, written out in full — not `~/...` or `$HOME/...`.
 
 **Bot does not respond to forwarded files**
-Make sure `/tgupload` was sent immediately before forwarding. If a file is sent without an active session, the bot intentionally does not reply.
+Make sure `/tgdownload` was sent immediately before forwarding. If a file is sent without an active session, the bot intentionally does not reply.
 
 ## Security Notes
 
