@@ -2,8 +2,6 @@
 
 # 🚀 Refactor Progress Tracker
 
-## Current Status
-
 * [ ] Tahap 1 — UserStateManager
 * [ ] Tahap 2 — File Utilities
 * [ ] Tahap 3 — Messages Module
