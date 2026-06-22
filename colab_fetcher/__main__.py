@@ -38,7 +38,7 @@ batch_tasks = {}
 BATCH_DELAY = 2  # detik
 
 # State File
-STATE_FILE = Path(__file__).resolve().parent.parent / "config/user_state.json"
+STATE_FILE = Path(__file__).resolve().parent / "config" / "user_state.json"
 STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
 
 # Dictionary ekstensi file
