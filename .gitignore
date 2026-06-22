@@ -1,0 +1,20 @@
+# Virtual environment
+.venv/
+
+# Python cache
+colab_fetcher/__pycache__/
+__pycache__/
+*.pyc
+
+# Pyrogram session (sensitif — berisi token login aktif)
+*.session
+*.session-journal
+
+# Credentials & runtime state (sensitif)
+colab_fetcher/config/credentials.json
+colab_fetcher/config/user_state.json
+config/user_state.json
+.env
+
+# Downloaded media (file besar, tidak perlu di-track)
+downloads/
