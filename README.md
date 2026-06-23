@@ -34,19 +34,45 @@ Originally built and run on Google Colab, this version has been migrated to run 
 ```
 Telegram-Fetcher/
 ├── colab_fetcher/
-│   ├── __init__.py          # Loads credentials from credentials.json
-│   ├── __main__.py          # Bot entrypoint, command handlers, download/queue logic
-│   ├── config/
-│   │   ├── credentials.json # Generated at runtime, not tracked in git
-│   │   └── user_state.json  # Per-user upload session state
+│   ├── __init__.py             # Empty (credentials loading moved)
+│   ├── __main__.py             # Pending refactor — currently contains all command handlers,
+│   │                           # entrypoint, and imports from new modules
+│   ├── messages.py             # ✅ All bot reply templates (start, help, 
+│   │                           # tgdownload, progress, summary, error)
+│   │
+│   ├── core/
+│   │   ├── __init__.py
+│   │   ├── state_manager.py    # ✅ Load/save/set/get/clear user state (JSON + lock)
+│   │   ├── queue_manager.py    # ✅ download_queue, active_downloads,
+│   │   │                       # completed_downloads, queue_worker
+│   │   └── batch_manager.py    # ✅ batch_buffer, batch_tasks, send_batch_message
+│   │
+│   ├── services/
+│   │   ├── __init__.py
+│   │   └── config_manager.py   # ✅ load_credentials, CONFIG_PATH
+│   │
+│   ├── downloader/
+│   │   ├── __init__.py
+│   │   └── telegram.py         # ✅ download_with_progress (Pyrogram-specific)
+│   │
 │   ├── utils/
-│   │   ├── client.py        # Pyrogram client initialization
-│   │   └── logging.py       # Shared logger configuration
-│   └── my_bot.session       # Pyrogram session file, not tracked in git
-├── downloads/               # Default download destination
-├── .env                     # Local credentials, not tracked in git
-├── .env.example             # Template for .env
-├── main.py                  # Entry script: loads .env, writes credentials.json, starts the bot
+│   │   ├── __init__.py
+│   │   ├── client.py           # ✅ Pyrogram client init (app)
+│   │   ├── logging.py          # ✅ Logger configuration
+│   │   ├── file_utils.py       # ✅ EXTENSIONS, format_duration, sanitize_filename,
+│   │   │                       # ext_from_mime, get_unique_filename,
+│   │   │                       # get_file_type, is_allowed_file, get_output_directory
+│   │   └── error_handler.py    # ✅ send_error
+│   │
+│   ├── config/
+│   │   ├── credentials.json    # Generated at runtime, not tracked in git
+│   │   └── user_state.json     # Per-user upload session state
+│   └── my_bot.session          # Pyrogram session file, not tracked in git
+│
+├── downloads/                  # Default download destination
+├── .env                        # Local credentials, not tracked in git
+├── .env.example                # Template for .env
+├── main.py                     # Entry script (unchanged)
 └── requirements.txt
 ```
 
