@@ -3,10 +3,10 @@ import asyncio
 
 from pyrogram.enums import ParseMode
 
-from colab_fetcher.downloader.telegram import download_with_progress
-from colab_fetcher.utils.error_handler import send_error
-from colab_fetcher.utils.logging import logger
-from colab_fetcher.messages import download_summary_message
+from fetcher_core.downloader.telegram import download_with_progress
+from fetcher_core.utils.error_handler import send_error
+from fetcher_core.utils.logging import logger
+from fetcher_core.messages import download_summary_message
 
 # ==========================
 # 📌 QUEUE STATE

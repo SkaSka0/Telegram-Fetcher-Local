@@ -2,7 +2,7 @@
 .venv/
 
 # Python cache
-colab_fetcher/__pycache__/
+fetcher_core/__pycache__/
 __pycache__/
 *.pyc
 
@@ -11,8 +11,8 @@ __pycache__/
 *.session-journal
 
 # Credentials & runtime state (sensitif)
-colab_fetcher/config/credentials.json
-colab_fetcher/config/user_state.json
+fetcher_core/config/credentials.json
+fetcher_core/config/user_state.json
 config/user_state.json
 .env
 

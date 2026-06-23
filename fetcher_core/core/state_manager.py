@@ -3,7 +3,7 @@ import os
 import asyncio
 from pathlib import Path
 
-# colab_fetcher/core/state_manager.py -> colab_fetcher/
+# fetcher_core/core/state_manager.py -> fetcher_core/
 STATE_FILE = Path(__file__).resolve().parent.parent / "config" / "user_state.json"
 STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
 

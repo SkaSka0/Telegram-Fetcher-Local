@@ -2,8 +2,8 @@ import asyncio
 
 from pyrogram.enums import ParseMode
 
-from colab_fetcher.core.state_manager import clear_user_state
-from colab_fetcher.utils.file_utils import smart_truncate_filename
+from fetcher_core.core.state_manager import clear_user_state
+from fetcher_core.utils.file_utils import smart_truncate_filename
 
 # ==========================
 # 📌 BATCH STATE

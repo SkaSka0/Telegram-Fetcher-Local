@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-from colab_fetcher.utils.logging import logger
+from fetcher_core.utils.logging import logger
 
 CONFIG_PATH = Path(__file__).resolve().parent.parent / "config" / "credentials.json"
 

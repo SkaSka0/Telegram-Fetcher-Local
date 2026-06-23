@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 APPNAME = "TelegramFetcher"
 REPO_DIR = Path(__file__).resolve().parent
 ENV_PATH = REPO_DIR / ".env"
-CONFIG_DIR = REPO_DIR / "colab_fetcher" / "config"
+CONFIG_DIR = REPO_DIR / "fetcher_core" / "config"
 
 
 def log(message, level="INFO"):
@@ -57,15 +57,15 @@ def save_runtime_config(api_id, api_hash, bot_token, download_path):
     }
     with open(CONFIG_DIR / "credentials.json", "w") as f:
         json.dump(credentials, f, indent=4)
-    log("Credentials disimpan ke colab_fetcher/config/credentials.json")
+    log("Credentials disimpan ke fetcher_core/config/credentials.json")
 
 
 def run_bot():
-    """Jalankan bot dari package colab_fetcher."""
+    """Jalankan bot dari package fetcher_core."""
     log("Memulai bot...", level="INFO")
     try:
         subprocess.run(
-            [sys.executable, "-m", "colab_fetcher"],
+            [sys.executable, "-m", "fetcher_core"],
             cwd=REPO_DIR,
             check=True,
         )

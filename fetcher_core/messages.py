@@ -1,6 +1,6 @@
 from humanize import naturalsize
 
-from colab_fetcher.utils.file_utils import smart_truncate_filename, format_duration
+from fetcher_core.utils.file_utils import smart_truncate_filename, format_duration
 
 
 def get_start_message() -> str:

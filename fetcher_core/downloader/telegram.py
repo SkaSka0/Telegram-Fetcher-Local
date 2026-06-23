@@ -5,9 +5,9 @@ import asyncio
 from pyrogram.enums import ParseMode
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 
-from colab_fetcher.utils.logging import logger
-from colab_fetcher.utils.error_handler import send_error
-from colab_fetcher.messages import get_progress_text
+from fetcher_core.utils.logging import logger
+from fetcher_core.utils.error_handler import send_error
+from fetcher_core.messages import get_progress_text
 
 
 async def download_with_progress(

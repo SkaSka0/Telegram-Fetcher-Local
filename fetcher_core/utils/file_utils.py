@@ -6,9 +6,9 @@ from pathlib import Path
 
 from pyrogram.types import Message
 
-from colab_fetcher.services.config_manager import CONFIG_PATH
+from fetcher_core.services.config_manager import CONFIG_PATH
 
-# colab_fetcher/utils/file_utils.py -> root repo
+# fetcher_core/utils/file_utils.py -> root repo
 REPO_DIR = Path(__file__).resolve().parent.parent.parent
 
 # Dictionary ekstensi file

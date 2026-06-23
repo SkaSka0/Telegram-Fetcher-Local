@@ -5,35 +5,35 @@ from pyrogram import filters
 from pyrogram.enums import ParseMode
 from pyrogram.types import Message
 
-from colab_fetcher.utils.client import app
-from colab_fetcher.utils.logging import logger
+from fetcher_core.utils.client import app
+from fetcher_core.utils.logging import logger
 
-from colab_fetcher.utils.file_utils import (
+from fetcher_core.utils.file_utils import (
     smart_truncate_filename,
     get_unique_filename,
     is_allowed_file,
     get_output_directory,
 )
 
-from colab_fetcher.messages import (
+from fetcher_core.messages import (
     get_start_message,
     get_help_message,
     get_tgdownload_message,
 )
 
-from colab_fetcher.core.state_manager import (
+from fetcher_core.core.state_manager import (
     set_user_state,
     get_user_state,
 )
 
-from colab_fetcher.core.queue_manager import (
+from fetcher_core.core.queue_manager import (
     download_queue,
     active_downloads,
     queue_worker,
     send_error,
 )
 
-from colab_fetcher.core.batch_manager import (
+from fetcher_core.core.batch_manager import (
     batch_buffer,
     batch_tasks,
     send_batch_message,
