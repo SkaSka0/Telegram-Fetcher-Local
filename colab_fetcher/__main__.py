@@ -14,7 +14,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from pathlib import Path
 
 from colab_fetcher import CONFIG_PATH
-from colab_fetcher import load_credentials
+from colab_fetcher.services.config_manager import load_credentials
 from colab_fetcher.utils.client import app
 from colab_fetcher.utils.logging import logger
 
