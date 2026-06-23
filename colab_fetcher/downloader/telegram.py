@@ -11,6 +11,7 @@ from colab_fetcher.messages import get_progress_text
 
 
 async def download_with_progress(
+    client,
     message: Message,
     file_path: str,
     output_dir: str,

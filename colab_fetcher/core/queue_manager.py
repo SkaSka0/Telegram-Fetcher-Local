@@ -27,7 +27,7 @@ async def queue_worker():
         user_id = message.from_user.id
         logger.info(f"Start processing file {file_path} for user {user_id}")
         try:
-            downloaded_path, elapsed_time = await download_with_progress(client, message, file_path, output_dir)
+            downloaded_path, elapsed_time = await download_with_progress(client, message, file_path, output_dir, active_downloads)
             if downloaded_path:
                 if user_id not in completed_downloads:
                     completed_downloads[user_id] = []
