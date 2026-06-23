@@ -39,6 +39,12 @@ from colab_fetcher.messages import (
     get_error_text,
 )
 
+from colab_fetcher.core.state_manager import (
+    set_user_state,
+    get_user_state,
+    clear_user_state,
+)
+
 # ==========================
 # 📌 GLOBAL VARIABLE
 # ==========================
@@ -46,18 +52,12 @@ from colab_fetcher.messages import (
 completed_downloads = {}
 active_downloads = {}
 
-# Lock global untuk state management
-state_lock = asyncio.Lock()
 download_queue = asyncio.Queue()
 
 # Tambahkan dictionary untuk menampung file sementara per user
 batch_buffer = {}
 batch_tasks = {}
 BATCH_DELAY = 2  # detik
-
-# State File
-STATE_FILE = Path(__file__).resolve().parent / "config" / "user_state.json"
-STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
 
 # ==========================
 # 📌 HANDLER FUNCTIONS
@@ -433,37 +433,6 @@ async def send_error(message: Message, error_type: str, detail: str = None):
     """Mengirim pesan error yang user-friendly dengan detail tambahan"""
     msg = get_error_text(error_type, detail)
     await message.reply_text(msg, parse_mode=ParseMode.HTML)
-
-# ==========================
-# 📌 USER STATE MANAGEMENT
-# ==========================
-
-async def load_user_state():
-    async with state_lock:
-        if os.path.exists(STATE_FILE):
-            with open(STATE_FILE, "r") as f:
-                return json.load(f)
-        return {}
-
-async def save_user_state(state):
-    async with state_lock:
-        with open(STATE_FILE, "w") as f:
-            json.dump(state, f)
-
-async def set_user_state(user_id, state):
-    state_dict = await load_user_state()
-    state_dict[str(user_id)] = state
-    await save_user_state(state_dict)
-
-async def get_user_state(user_id):
-    state = await load_user_state()
-    return state.get(str(user_id), None)
-
-async def clear_user_state(user_id):
-    state_dict = await load_user_state()
-    if str(user_id) in state_dict:
-        del state_dict[str(user_id)]
-        await save_user_state(state_dict)
 
 # ==========================
 # 📌 MAIN ENTRY POINT
