@@ -33,7 +33,7 @@ Originally built and run on Google Colab, this version has been migrated to run 
 
 ```
 Telegram-Fetcher/
-├── colab_fetcher/
+├── fetcher_core/
 │   ├── __init__.py             # Empty (credentials loading moved)
 │   ├── __main__.py             # Pending refactor — currently contains all command handlers,
 │   │                           # entrypoint, and imports from new modules
@@ -143,7 +143,7 @@ Or with `uv`:
 uv run main.py
 ```
 
-On first run, `main.py` will validate the `.env` file, generate `colab_fetcher/config/credentials.json`, and launch the bot process. Press `Ctrl+C` to stop the bot gracefully.
+On first run, `main.py` will validate the `.env` file, generate `fetcher_core/config/credentials.json`, and launch the bot process. Press `Ctrl+C` to stop the bot gracefully.
 
 ### Bot Commands
 
@@ -169,7 +169,7 @@ The bot **only processes files immediately after `/tgdownload` is sent**. Files 
 
 - **Queue worker** — a single background `asyncio` task (`queue_worker`) consumes the download queue one item at a time, so downloads do not run concurrently and overwhelm the disk or connection.
 - **Batching** — incoming files are buffered per user for a short delay (`BATCH_DELAY`); if more files arrive within that window, they're grouped into one batch notification instead of spamming individual messages.
-- **State persistence** — each user's upload session state is stored in `colab_fetcher/config/user_state.json`, so the gating logic survives process restarts mid-session (though active downloads themselves do not resume across restarts).
+- **State persistence** — each user's upload session state is stored in `fetcher_core/config/user_state.json`, so the gating logic survives process restarts mid-session (though active downloads themselves do not resume across restarts).
 - **Cancellation** — each active download is tracked in memory with a cancellation flag, checked periodically inside the download's progress callback, and toggled either through the inline cancel button or `/cancelall`.
 
 ## Troubleshooting
@@ -191,9 +191,9 @@ Make sure `/tgdownload` was sent immediately before forwarding. If a file is sen
 The following files contain sensitive data and are excluded from version control via `.gitignore`:
 
 - `.env` — Telegram API credentials
-- `colab_fetcher/config/credentials.json` — runtime copy of credentials
+- `fetcher_core/config/credentials.json` — runtime copy of credentials
 - `*.session` / `*.session-journal` — active Pyrogram login session
-- `colab_fetcher/config/user_state.json` — per-user runtime state
+- `fetcher_core/config/user_state.json` — per-user runtime state
 
 Never commit these files or share them publicly; the session file in particular grants live access to the bot account.
 
