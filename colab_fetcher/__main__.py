@@ -1,31 +1,16 @@
 import os
-import time
 import asyncio
-import json
-import mimetypes
-
-from tqdm import tqdm
-from datetime import datetime 
-from typing import Optional, Union
 from humanize import naturalsize
-from pyrogram import filters, Client
+from pyrogram import filters
 from pyrogram.enums import ParseMode
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
-from pathlib import Path
+from pyrogram.types import Message
 
-from colab_fetcher.services.config_manager import load_credentials
 from colab_fetcher.utils.client import app
 from colab_fetcher.utils.logging import logger
 
 from colab_fetcher.utils.file_utils import (
-    EXTENSIONS,
-    format_duration,
     smart_truncate_filename,
-    sanitize_filename,
-    get_file_extension,
-    ext_from_mime,
     get_unique_filename,
-    get_file_type,
     is_allowed_file,
     get_output_directory,
 )
@@ -34,21 +19,16 @@ from colab_fetcher.messages import (
     get_start_message,
     get_help_message,
     get_tgdownload_message,
-    get_progress_text,
-    download_summary_message,
-    get_error_text,
 )
 
 from colab_fetcher.core.state_manager import (
     set_user_state,
     get_user_state,
-    clear_user_state,
 )
 
 from colab_fetcher.core.queue_manager import (
     download_queue,
     active_downloads,
-    completed_downloads,
     queue_worker,
     send_error,
 )
